@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { getPhotosAlbumList } from "./getBucket";
 
 export default async function nav () {
@@ -12,11 +13,13 @@ export default async function nav () {
       <h1>Kurt Wu Photography</h1>
       {/* <div onClick={() => handleDisplay('photos')}>Photos</div> */}
       <ul>
-        Photos
+        <Link href="/photos">Photos</Link>
         {
-          photoAlbums.map(({ name, path }) => {
+          photoAlbums.map(({ name, _path }) => {
             return (
-              <li key={name}>{name}</li>
+              <li key={name}>
+                <Link href={`/photos/${name}`}>{name}</Link>
+              </li>
             )
           })
         }

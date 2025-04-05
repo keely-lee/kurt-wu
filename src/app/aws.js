@@ -28,7 +28,6 @@ export default class AwsClient {
   }
 
 
-  //  Delimiter: "/" -> response.CommonPrefixes for list of album name (undefined if none, includes only album names, no floating objects)
   //  Delimiter: "/", Prefix: "photos/" -> response.Contents for items (including current folder)
   // ** ignore videos for now, focus on photos and photo albums
   // major error handling needed 
@@ -37,14 +36,11 @@ export default class AwsClient {
   static photosCommand = new ListObjectsCommand({ Bucket: AwsClient.BUCKET, Delimiter: "/", Prefix: "photos/" });
   static videosCommand = new ListObjectsCommand({ Bucket: AwsClient.BUCKET, Delimiter: "/", Prefix: "videos/" });
   
-  getAlbumContents = async (album, delimiter = "/", bucket = AwsClient.BUCKET) => {
+  getAlbumContents = async (albumPath, delimiter = "/", bucket = AwsClient.BUCKET) => {
     // [TODO]: skip over folder in mapping of images
-
-    const prefix = album ? album[-1] === "/" : album + "/"; 
+    const prefix = albumPath.slice(-1) === "/" ? albumPath : albumPath + "/"; 
     const albumObj = await this.s3Client.send(new ListObjectsCommand({ Bucket: bucket, Delimiter: delimiter, Prefix: prefix}));
     return albumObj;
-
-    // PHOTOS LIST
   }
 
   getPhotos = async () => {
