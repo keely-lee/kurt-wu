@@ -55,15 +55,15 @@ export const getAlbumsList = cache(async function (path = photosPath) {
   }
 });
 
-const getBucketObject = async (key) => {
-  const obj = await s3Client.getBucketObject(photoKey);
+const _getBucketObject = async (key) => {
+  const obj = await s3Client.getBucketObject(key);
   return obj;
 }
 
 export const getImageSrc = cache(async (photoKey) => {
   // key: 'photos/photoName.jpg' or 'photos/albumName/photoName.jpg'
   try {
-    const imageObj = await getBucketObject(photoKey);
+    const imageObj = await _getBucketObject(photoKey);
     const srcStr = await imageObj.Body.transformToString('base64');
     return srcStr;
   } catch (e) {

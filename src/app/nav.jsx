@@ -21,29 +21,27 @@ export default function nav ({ photoAlbums = [] }) {
   }
 
   return (
-    <nav>
+    <nav className="w-3/11">
       {/* back button here??  */}
       <h1>Kurt Wu Photography</h1>
-      <ul>
-        <Link href="/photos">Photos</Link>
-        <Image 
-          src="/angle-right-solid.svg"
-          className={classNames({"display": togglePhotos})}
-          alt="Email"
-          width={16}
-          height={16}
-          onClick={() => handleClick('photos')}
-        />
-        <Image 
-          src="/angle-down-solid.svg"
-          className={classNames({"display": !togglePhotos})}
-          alt="Email"
-          width={16}
-          height={16}
-          onClick={() => handleClick('photos')}
-          style="color:white"
-          // REMOVE
-        />
+      <Link href="/photos">Photos</Link>
+      <Image
+        src="/angle-right-solid.svg"
+        className={classNames({"hide": !togglePhotos})}
+        alt="Email"
+        width={16}
+        height={16}
+        onClick={() => handleClick('photos')}
+      />
+      <Image
+        src="/angle-down-solid.svg"
+        className={classNames({"hide": togglePhotos})}
+        alt="Email"
+        width={16}
+        height={16}
+        onClick={() => handleClick('photos')}
+      />
+      <ul className={classNames({"hide": !togglePhotos})}>
         {
           photoAlbums.map(({ name, _path }) => {
             return (
@@ -60,17 +58,17 @@ export default function nav ({ photoAlbums = [] }) {
       <br/>
       <br/>
 
-      <div>
-        <a>twitter</a><br/>
-        <a>fb</a><br/>
+      <div className="links">
+        <a>twitter</a>
+        <a>fb</a>
         
         <a href="https://www.instagram.com/_73nine?igsh=MWZ5d3FnMnNjMnlicw==" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:underline hover:underline-offset-4" >
           <Image
             className="dark:invert"
             src="/instagram-brands.svg"
             alt="Instagram logo"
-            width={38}
-            height={38}
+            width={30}
+            height={30}
           />
         </a>
         <a href="mailto:wusicong001@gmail.com" className="flex items-center gap-2 hover:underline hover:underline-offset-4" >
@@ -78,8 +76,8 @@ export default function nav ({ photoAlbums = [] }) {
             className="dark:invert"
             src="/envelope-regular.svg"
             alt="Email"
-            width={38}
-            height={38}
+            width={30}
+            height={30}
           />
         </a>
       </div>
