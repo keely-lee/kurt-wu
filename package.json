@@ -12,6 +12,7 @@
     "@aws-sdk/client-cognito-identity": "^3.775.0",
     "@aws-sdk/client-s3": "^3.775.0",
     "@aws-sdk/credential-providers": "^3.775.0",
+    "classnames": "^2.5.1",
     "next": "15.2.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"

@@ -1,26 +1,23 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { getPhotos, getPhotosAlbumList, getImageSrc } from "../getBucket";
+import { getAlbumContents, getAlbumsList, getImageSrc } from "../getBucket";
+import { photosPath } from '../util';
 
 export default async function Photos() {
-  //  Delimiter: "/" -> response.CommonPrefixes for list of album name (undefined if none. trailing '/' included for album names)
+  // Path: /photos/albumName
   // [TODO]: major error handling needed 
 
-  const { Contents } = await getPhotos(); 
-  // [{ Key: 'photos/', Size: 0, ETag: '"d41d8cd98f00b204e9800998ecf8427e"' ... }, 
-  //  { Key: 'photos/photo_name.jpg', Size: 1981105, ETag: '"ebacb11b167161b33e0b9f18efae4ac4"' ...}]
-
-  // [TODO]: put this somewhere else
-  const photos = Contents.filter(({ Size }) => Size);
-  const albums = await getPhotosAlbumList(); // [ { name: albumName, path: folderPath }, ... ]
+  const photos = await getAlbumContents(photosPath)
+  const albums = await getAlbumsList(photosPath);
 
   return (
     <div> 
       <Link href='/'>HOME</Link>
       {/* figure out appropriate times to use replace */}
       Albums: 
+      {/* map album names to first image? */}
       <ul>
-        { albums.map(({name, _path}) => (
+        { albums.map(({ name }) => (
           <li key={name}>
             <Link href={`/photos/${name}`}>{name}</Link>
           </li>
@@ -30,10 +27,17 @@ export default async function Photos() {
       Images
       <div> 
         {
-          photos.map(async (photoContents) => {
-              const photo = await getImageSrc(photoContents.Key)
-              return <img key={photoContents.ETag} src={`data:image/png;base64,${photo}`} alt="" width={500}/>
-              // return <Image key={photoContents.ETag} src={`data:image/png;base64,${photo}`} alt="" />
+          photos.map(async ({Key, ETag}) => {
+            const photo = await getImageSrc(Key)
+            const encoded = encodeURIComponent(photo)
+            return (
+              <Image src={`data:image/jpeg;base64,${encoded}`}
+                key={ETag} 
+                alt={Key} 
+                width={500}
+                height={500}
+              />
+            )
           })
         }
       </div>

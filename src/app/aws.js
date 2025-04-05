@@ -27,49 +27,19 @@ export default class AwsClient {
     });
   }
 
-
-  //  Delimiter: "/", Prefix: "photos/" -> response.Contents for items (including current folder)
-  // ** ignore videos for now, focus on photos and photo albums
-  // major error handling needed 
-
   static BUCKET = "kurtwuphotography";
-  static photosCommand = new ListObjectsCommand({ Bucket: AwsClient.BUCKET, Delimiter: "/", Prefix: "photos/" });
-  static videosCommand = new ListObjectsCommand({ Bucket: AwsClient.BUCKET, Delimiter: "/", Prefix: "videos/" });
-  
+
   getAlbumContents = async (albumPath, delimiter = "/", bucket = AwsClient.BUCKET) => {
-    // [TODO]: skip over folder in mapping of images
-    const prefix = albumPath.slice(-1) === "/" ? albumPath : albumPath + "/"; 
-    const albumObj = await this.s3Client.send(new ListObjectsCommand({ Bucket: bucket, Delimiter: delimiter, Prefix: prefix}));
+    // albumPath: 'photos/' or 'photos/albumName/
+    const albumObj = await this.s3Client.send(new ListObjectsCommand({ Bucket: bucket, Delimiter: delimiter, Prefix: albumPath}));
     return albumObj;
   }
 
-  getPhotos = async () => {
-    try {
-      const photosObjs = await this.s3Client.send(AwsClient.photosCommand);
-      return photosObjs;
-    } catch (e) {
-      console.log('error')
-      console.log(e)
-      console.log('---------')
-    }
-  }
-
-  getVideos = async () => {
-    const videosObjs = await this.s3Client.send(AwsClient.videosCommand);
-    return videosObjs;
-  }
-
-  _getBucketObject = async (key = 'photos/temp-photo.jpg', bucket = AwsClient.BUCKET) => {
+  getBucketObject = async (key, bucket = AwsClient.BUCKET) => {
+    // key: 'photos/photoName.jpg' or 'photos/albumName/photoName.jpg'
     const imageObj = await this.s3Client.send(new GetObjectCommand({ Bucket: bucket, Key: key }));
     return imageObj;
   }
-  
-  getImageSrc = async (key) => {
-    const imageObj = await this._getBucketObject(key);
-    const srcString = await imageObj.Body.transformToString('base64');
-    return srcString;
-  }
-
 
 
   /* 
@@ -85,6 +55,4 @@ export default class AwsClient {
   */
 
   // [TODO]: Look into cloudfront, promises? & other ways to minimize high GET requests
-  //  return <img key={o.ETag} src={`data:image/png;base64,${photoContent}`} />
-
 }
