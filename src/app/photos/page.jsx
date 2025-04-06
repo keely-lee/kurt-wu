@@ -11,7 +11,7 @@ export default async function Photos() {
   const albums = await getAlbumsList(photosPath);
 
   return (
-    <div> 
+    <div className="main temporary">
       <Link href='/'>HOME</Link>
       {/* figure out appropriate times to use replace */}
       Albums: 

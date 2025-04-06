@@ -9,10 +9,10 @@ export default async function Album ({ params }) {
   const photos = await getAlbumContents(`${photosPath}${album}/`);
 
   return (
-    <div>
-      <Link href='/photos'>BACK</Link>
-      <h1>{album}</h1>
-      <div>
+    <div className="main flex-col temporary tempwhite">
+      <Link className="tempb" href='/photos'>BACK</Link>
+      <h1 className="tempb">{album}</h1>
+      <div className='flex justify-evenly tempgap-y-10 flex-wrap'>
         {
           photos.map(async ({Key, ETag}) => {
             const src = await getImageSrc(Key);
@@ -23,8 +23,8 @@ export default async function Album ({ params }) {
                   key={ETag}
                   src={`data:image/jpeg;base64,${encoded}`}
                   alt={Key}
-                  width={500}
-                  height={500}
+                  width={550}
+                  height={550}
                 />
               </Link>
             )
