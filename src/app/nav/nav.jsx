@@ -21,8 +21,8 @@ export default function nav ({ photoAlbums = [] }) {
   }
 
   return (
-    <div className="h-full temp-red">
-      <nav className="h-11/12 temp-orange">
+    <div className="h-full">
+      <nav className="h-11/12">
         {/* back button here??  */}
         <div className="h-3/10">
           <h1>Kurt Wu Photography</h1>
@@ -33,7 +33,7 @@ export default function nav ({ photoAlbums = [] }) {
               <Link href="/photos" className="pr-2">Photos</Link>
               <Image
                 src="/angle-right-solid.svg"
-                className={classNames("dark:invert tempcaret", {"hide": togglePhotos})}
+                className={classNames("hover:cursor-pointer", {"hide": togglePhotos})}
                 alt="toggle"
                 width={10}
                 height={16}
@@ -41,7 +41,7 @@ export default function nav ({ photoAlbums = [] }) {
               />
               <Image
                 src="/angle-down-solid.svg"
-                className={classNames("dark:invert tempcaret", {"hide": !togglePhotos})}
+                className={classNames("hover:cursor-pointer", {"hide": !togglePhotos})}
                 alt="toggle"
                 width={16}
                 height={12}
@@ -63,7 +63,7 @@ export default function nav ({ photoAlbums = [] }) {
               <Link href="/videos" className="pr-2">Videos</Link>
               <Image
                 src="/angle-right-solid.svg"
-                className={classNames("dark:invert tempcaret", {"hide": toggleVideos})}
+                className={classNames("hover:cursor-pointer", {"hide": toggleVideos})}
                 alt="toggle"
                 width={10}
                 height={16}
@@ -71,7 +71,7 @@ export default function nav ({ photoAlbums = [] }) {
               />
               <Image
                 src="/angle-down-solid.svg"
-                className={classNames("dark:invert tempcaret", {"hide": !toggleVideos})}
+                className={classNames("hover:cursor-pointer", {"hide": !toggleVideos})}
                 alt="toggle"
                 width={16}
                 height={12}
@@ -90,7 +90,6 @@ export default function nav ({ photoAlbums = [] }) {
           <a>fb</a>
           <a href="https://www.instagram.com/_73nine?igsh=MWZ5d3FnMnNjMnlicw==" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:underline hover:underline-offset-4" >
             <Image
-              className="dark:invert"
               src="/instagram-brands.svg"
               alt="Instagram logo"
               width={23}
@@ -99,7 +98,6 @@ export default function nav ({ photoAlbums = [] }) {
           </a>
           <a href="mailto:wusicong001@gmail.com" className="flex items-center gap-2 hover:underline hover:underline-offset-4" >
             <Image
-              className="dark:invert"
               src="/envelope-regular.svg"
               alt="Email"
               width={23}

@@ -9,9 +9,9 @@ export default async function Album ({ params }) {
   const photos = await getAlbumContents(`${photosPath}${album}/`);
 
   return (
-    <div className="main album-main flex-col bg-white w-5/6 peer/wide">
-      <Link className="tempb" href='/photos'>BACK</Link>
-      <h1 className="tempb text-center">{album}</h1>
+    <div className="main album-main flex-col w-5/6">
+      <Link className="" href='/photos'>BACK</Link>
+      <h1 className="text-center">{album}</h1>
       {/* <div className='flex justify-evenly tempgap-y-10 flex-wrap'> */}
       <div className='grid grid-cols-3'>
         {

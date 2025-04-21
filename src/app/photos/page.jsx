@@ -4,14 +4,13 @@ import { getAlbumContents, getAlbumsList, getImageSrc } from "../getBucket";
 import { photosPath } from '../util';
 
 export default async function Photos() {
-  // Path: /photos/albumName
+  // Path: /photos
   // [TODO]: major error handling needed 
 
-  // const photos = await getAlbumContents(photosPath)
   const albums = await getAlbumsList(photosPath);
 
   return (
-    <div className="main w-3/4">
+    <div className="main w-3/4 dark:bg-neutral-950 dark:text-slate-200 peer/dark peer/wide">
       <Link href='/'>HOME</Link>
       {/* figure out appropriate times to use replace */}
       Albums: 
@@ -23,24 +22,6 @@ export default async function Photos() {
           </li>
         ))} 
       </ul> 
-
-      {/* Images
-      <div> 
-        {
-          photos.map(async ({Key, ETag}) => {
-            const photo = await getImageSrc(Key)
-            const encoded = encodeURIComponent(photo)
-            return (
-              <Image src={`data:image/jpeg;base64,${encoded}`}
-                key={ETag} 
-                alt={Key} 
-                width={500}
-                height={500}
-              />
-            )
-          })
-        }
-      </div> */}
     </div>
   ); 
 }

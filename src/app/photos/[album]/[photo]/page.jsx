@@ -7,7 +7,7 @@ export default async function Photo ({ params }) {
   const src = await getImageSrc(`photos/${album}/${photo}`);
   const encoded = encodeURI(src)
   return (
-    <div className='main album-main flex-col bg-white w-5/6 peer/wide'>
+    <div className='main album-main flex-col w-5/6'>
       <Link href={`/photos/${album}`}>HOME/BACK</Link>
       <Image
         src={`data:image/jpeg;base64,${encoded}`}
