@@ -23,11 +23,10 @@ export default function nav ({ photoAlbums = [] }) {
   return (
     <div className="h-full">
       <nav className="h-11/12">
-        {/* back button here??  */}
         <div className="h-3/10">
-          <h1>Kurt Wu Photography</h1>
+          <h1 className="pt-8 pb-8 pl-0">Kurt Wu Photography</h1>
         </div>
-        <div className="nav-pages h-5/10">
+        <div className="*:pt-2 *:pb-2 h-5/10">
           <div> {/* photo div*/}
             <div className="flex">
               <Link href="/photos" className="pr-2">Photos</Link>
@@ -86,8 +85,6 @@ export default function nav ({ photoAlbums = [] }) {
         </div>
 
         <div className="links h-2/10">
-          <a>twitter</a>
-          <a>fb</a>
           <a href="https://www.instagram.com/_73nine?igsh=MWZ5d3FnMnNjMnlicw==" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:underline hover:underline-offset-4" >
             <Image
               src="/instagram-brands.svg"
@@ -106,7 +103,7 @@ export default function nav ({ photoAlbums = [] }) {
           </a>
         </div>
       </nav>
-      <footer className="flex h-1/12 justify-center items-end temp-blue text-sm">
+      <footer className="flex h-1/12 justify-center items-end text-sm">
         <div>
           <a href="https://keely-lee.github.io/" target="_blank" className="copyright">
             &copy; Keely Lee

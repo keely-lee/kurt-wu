@@ -8,7 +8,14 @@ export default async function Photo ({ params }) {
   const encoded = encodeURI(src)
   return (
     <div className='main album-main flex-col w-5/6'>
-      <Link href={`/photos/${album}`}>HOME/BACK</Link>
+      <Link href={`/photos/${album}`} className='fixed p-2 hover:cursor-pointer'>
+        <Image
+          src="/arrow-left-solid.svg"
+          alt="back"
+          width={15}
+          height={15}
+        />
+      </Link>
       <Image
         src={`data:image/jpeg;base64,${encoded}`}
         alt={photo}
