@@ -1,5 +1,5 @@
 import { cache } from 'react';
-// switch to NextJs use cache when stable
+// switch to NextJs [use cache] when stable
 import AwsClient from './aws';
 import { photosPath } from './util';
 

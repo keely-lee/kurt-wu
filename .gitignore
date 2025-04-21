@@ -42,4 +42,5 @@ next-env.d.ts
 
 
 # kl random
+src/middleware.js
 /temp_copies

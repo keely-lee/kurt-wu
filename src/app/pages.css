@@ -7,13 +7,21 @@
   }
 }
 
+/* @custom-variant main-wide  */
+
 .main {
   position: sticky;
   left: 1000px;
   display: flex;
   min-height: 100vh;
-  width: calc(3 / 4 * 100%);
+  padding-right: 2.5rem;
 }
+
+.nav-custom {
+  width: calc(1/6 * 100%);
+  background-color: white;
+}
+
 
 a > img {
   /* border: 1px solid yellow; */

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Image from 'next/image';
+// import Image from 'next/image';
 import { getAlbumContents, getAlbumsList, getImageSrc } from "../getBucket";
 import { photosPath } from '../util';
 
@@ -7,11 +7,11 @@ export default async function Photos() {
   // Path: /photos/albumName
   // [TODO]: major error handling needed 
 
-  const photos = await getAlbumContents(photosPath)
+  // const photos = await getAlbumContents(photosPath)
   const albums = await getAlbumsList(photosPath);
 
   return (
-    <div className="main temporary">
+    <div className="main w-3/4">
       <Link href='/'>HOME</Link>
       {/* figure out appropriate times to use replace */}
       Albums: 
@@ -24,7 +24,7 @@ export default async function Photos() {
         ))} 
       </ul> 
 
-      Images
+      {/* Images
       <div> 
         {
           photos.map(async ({Key, ETag}) => {
@@ -40,7 +40,7 @@ export default async function Photos() {
             )
           })
         }
-      </div>
+      </div> */}
     </div>
   ); 
 }

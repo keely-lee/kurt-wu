@@ -27,6 +27,9 @@ export default class AwsClient {
     });
   }
 
+  // [TODO]: make bucket public and use NextJs fetch api?
+  // update Next config if using fetch
+
   static BUCKET = "kurtwuphotography";
 
   getAlbumContents = async (albumPath, delimiter = "/", bucket = AwsClient.BUCKET) => {

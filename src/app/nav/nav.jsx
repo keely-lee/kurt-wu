@@ -50,13 +50,11 @@ export default function nav ({ photoAlbums = [] }) {
             </div>
             <ul className={classNames("pl-4", {"hide": !togglePhotos})}>
               {
-                photoAlbums.map(({ name, _path }) => {
-                  return (
-                    <li key={name}>
-                      <Link href={`/photos/${name}`}>{name}</Link>
-                    </li>
-                  )
-                })
+                photoAlbums.map(({ name, _path }) => (
+                  <li key={name}>
+                    <Link href={`/photos/${name}`}>{name}</Link>
+                  </li>
+                ))
               }
             </ul>
           </div>
@@ -112,8 +110,9 @@ export default function nav ({ photoAlbums = [] }) {
       </nav>
       <footer className="flex h-1/12 justify-center items-end temp-blue text-sm">
         <div>
-          {/* add portfolio link */}
-          <span className="copyright">&copy; Keely Lee</span>
+          <a href="https://keely-lee.github.io/" target="_blank" className="copyright">
+            &copy; Keely Lee
+          </a>
         </div>
       </footer>
     </div>
