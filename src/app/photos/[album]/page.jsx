@@ -7,7 +7,6 @@ export default async function Album ({ params }) {
   // Path: /photos/albumName
   const { album } = await params;
   const photos = await getAlbumContents(`${photosPath}${album}/`);
-  // get img srcs, before rendering?
 
   return (
     <div className="main album-main flex-col w-5/6">
