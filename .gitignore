@@ -44,3 +44,4 @@ next-env.d.ts
 # kl random
 src/middleware.js
 /temp_copies
+tailwind.config.js

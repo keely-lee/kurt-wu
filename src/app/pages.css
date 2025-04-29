@@ -7,6 +7,10 @@
   }
 }
 
+@view-transition {
+  navigation: auto;
+}
+
 .main {
   position: sticky;
   left: 1000px;
@@ -14,6 +18,17 @@
   min-height: 100vh;
   padding-right: 2.5rem;
   z-index: 50;
+
+  @media (width < 96rem) {
+    /* name max width to save across all */
+    left: 0px;
+    min-height: calc(7/8 * 100%);
+    height: calc(7/8 * 100%);
+    padding: 0.5rem;
+    width: 100%;
+    top: 900px;
+    overflow: auto;
+  }
 }
 
 .links {
@@ -24,13 +39,31 @@
   a {
     padding: 0 .25rem;
   }
+
+  @media (width < 96rem) {
+    display: block;
+    width: auto;
+  }
 }
 
 .hide {
-  display: none;
+  visibility: hidden;
+  /* need to handle second toggle, display none instead. full web size also */
 }
 
-
 /* mobile */
+@media (width < 96rem) {
+  /* add all css media size here? */
+  .hide-bg {
+    background-color: var(--color-stone-50);
+    border-radius: 4px;
+    box-shadow: 2px 2px 4px var(--color-neutral-600);
+    height: min-content;
+  }
 
-
+  .peer\/dark~div {
+    .hide-bg {
+      background-color: var(--color-neutral-800);
+    }
+  }
+}

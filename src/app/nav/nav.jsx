@@ -9,25 +9,26 @@ export default function nav ({ photoAlbums = [] }) {
   // [{ name: albumName, path: folderPath }, { name: "hawaii", path: "photos/hawaii/" }, ...]
 
   const [ togglePhotos, setTogglePhotos ] = useState(false);
-  const [ toggleVideos, setToggleVideos ] = useState(false);
 
-  const handleClick = (list) => {
+  const handleClick = (_list) => {
     // [TODO] set limit amount of albums, cap @ 8-10?
-    if (list === 'photos') {
-      setTogglePhotos(!togglePhotos);
-    } else if (list === 'videos') {
-      setToggleVideos(!toggleVideos);
-    }
+    // No videos yet
+    setTogglePhotos(!togglePhotos);
+  }
+
+  const handleBlur = (_e) => {
+    setTogglePhotos(false);
   }
 
   return (
     <div className="h-full">
-      <nav className="h-11/12">
-        <div className="h-3/10">
-          <h1 className="pt-8 pb-8 pl-0">Kurt Wu Photography</h1>
+      <nav className="h-11/12 max-xl:h-full max-xl:flex max-xl:flex-wrap">
+        <div className="h-3/10 max-xl:order-1 max-xl:flex-[8_0]">
+          <h1 className="pt-8 pb-8 pl-0 max-xl:p-2">Kurt Wu Photography</h1>
         </div>
-        <div className="*:pt-2 *:pb-2 h-5/10">
-          <div> {/* photo div*/}
+        <div className="*:pt-2 *:pb-2 h-5/10 max-xl:order-3 max-xl:basis-full max-xl:flex max-xl:pl-2">
+          <div className={classNames("max-xl:pl-2 max-xl:pr-4", {"hide-bg": togglePhotos})} tabIndex={0} onBlur={handleBlur}>
+            {/* photo div*/}
             <div className="flex">
               <Link href="/photos" className="pr-2">Photos</Link>
               <Image
@@ -37,7 +38,7 @@ export default function nav ({ photoAlbums = [] }) {
                 width={10}
                 height={16}
                 onClick={() => handleClick('photos')}
-              />
+                />
               <Image
                 src="/angle-down-solid.svg"
                 className={classNames("hover:cursor-pointer", {"hide": !togglePhotos})}
@@ -46,45 +47,24 @@ export default function nav ({ photoAlbums = [] }) {
                 height={12}
                 onClick={() => handleClick('photos')}
               />
+
             </div>
             <ul className={classNames("pl-4", {"hide": !togglePhotos})}>
               {
                 photoAlbums.map(({ name, _path }) => (
                   <li key={name}>
-                    <Link href={`/photos/${name}`}>{name}</Link>
+                    <Link href={`/photos/${name}`} onMouseDown={e => e.preventDefault()} onClick={handleBlur}>{name}</Link>
                   </li>
                 ))
               }
             </ul>
           </div>
-          <div> {/* video div */}
-            <div className="flex">
-              <Link href="/videos" className="pr-2">Videos</Link>
-              <Image
-                src="/angle-right-solid.svg"
-                className={classNames("hover:cursor-pointer", {"hide": toggleVideos})}
-                alt="toggle"
-                width={10}
-                height={16}
-                onClick={() => handleClick('videos')}
-              />
-              <Image
-                src="/angle-down-solid.svg"
-                className={classNames("hover:cursor-pointer", {"hide": !toggleVideos})}
-                alt="toggle"
-                width={16}
-                height={12}
-                onClick={() => handleClick('videos')}
-              />
-            </div>
-            <ul></ul>
-          </div>
-          <div>
-            <a href="/" >Bio</a>
+          <div className="max-xl:pl-6">
+            <a href="/">Bio</a>
           </div>
         </div>
 
-        <div className="links h-2/10">
+        <div className="links h-2/10 max-xl:order-2 max-xl:flex-[1_0] max-xl:self-center">
           <a href="https://www.instagram.com/_73nine?igsh=MWZ5d3FnMnNjMnlicw==" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:underline hover:underline-offset-4" >
             <Image
               src="/instagram-brands.svg"
@@ -103,7 +83,9 @@ export default function nav ({ photoAlbums = [] }) {
           </a>
         </div>
       </nav>
-      <footer className="flex h-1/12 justify-center items-end text-sm">
+      <footer className="flex h-1/12 justify-center items-end text-sm 
+        max-xl:fixed max-xl:bottom-5 max-xl:z-60 max-xl:w-full
+      ">
         <div>
           <a href="https://keely-lee.github.io/" target="_blank" className="copyright">
             &copy; Keely Lee

@@ -8,7 +8,7 @@ export default async function Photo ({ params }) {
   const encoded = encodeURI(src)
   return (
     <div className='main album-main flex-col w-5/6'>
-      <Link href={`/photos/${album}`} className='fixed p-2 hover:cursor-pointer'>
+      <Link href={`/photos/${album}`} className='fixed p-2 hover:cursor-pointer max-xl:top-28'>
         <Image
           src="/arrow-left-solid.svg"
           alt="back"
