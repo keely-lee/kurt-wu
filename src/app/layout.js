@@ -23,11 +23,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        <meta charset="UTF-8" />
+        <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased flex dark max-xl:col max-xl:min-h-screen max-xl:h-screen`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased flex dark col xl:row h-dvh min-h-dvh`}
       > 
         {children}
         <Nav />

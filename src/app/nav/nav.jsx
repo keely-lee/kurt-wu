@@ -22,12 +22,12 @@ export default function nav ({ photoAlbums = [] }) {
 
   return (
     <div className="h-full">
-      <nav className="h-11/12 max-xl:h-full max-xl:flex max-xl:flex-wrap">
-        <div className="h-3/10 max-xl:h-5/10 max-sm:h-3/10 max-xl:order-1 max-xl:flex-[8_0]">
-          <h1 className="pt-8 pb-8 pl-0 max-xl:p-2">Kurt Wu Photography</h1>
+      <nav className="h-full xl:h-11/12 flex flex-wrap xl:block">
+        <div className="h-3/10 sm:h-5/10 xl:h-3/10 order-1 flex-[8_0]">
+          <h1 className="p-2 xl:py-8 xl:px-0">Kurt Wu Photography</h1>
         </div>
-        <div className="*:pt-2 *:pb-2 h-5/10 max-xl:order-3 max-xl:basis-full max-xl:flex max-xl:pl-2">
-          <div className={classNames("max-xl:pl-2 max-xl:pr-4", {"hide-bg": togglePhotos})} tabIndex={0} onBlur={handleBlur}>
+        <div className="*:py-2 h-5/10 flex order-3 basis-full pl-2 xl:block xl:pl-0">
+          <div className={classNames("pl-2 pr-4 xl:pl-0", {"hide-bg": togglePhotos})} tabIndex={0} onBlur={handleBlur}>
             {/* photo div*/}
             <div className="flex">
               <Link href="/photos" className="pr-2">Photos</Link>
@@ -59,13 +59,13 @@ export default function nav ({ photoAlbums = [] }) {
               }
             </ul>
           </div>
-          <div className="max-xl:pl-6">
+          <div className="pl-6 xl:pl-0">
             <a href="/">Bio</a>
           </div>
         </div>
 
-        <div className="links h-2/10 max-xl:order-2 max-xl:flex-[1_0] max-xl:self-center">
-          <a href="https://www.instagram.com/_73nine?igsh=MWZ5d3FnMnNjMnlicw==" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:underline hover:underline-offset-4" >
+        <div className="links h-2/10 order-2 flex-[1_0] self-center">
+          <a href="https://www.instagram.com/_73nine?igsh=MWZ5d3FnMnNjMnlicw==" target="_blank" rel="noopener noreferrer">
             <Image
               src="/instagram-brands.svg"
               alt="Instagram logo"
@@ -73,7 +73,7 @@ export default function nav ({ photoAlbums = [] }) {
               height={23}
             />
           </a>
-          <a href="mailto:wusicong001@gmail.com" className="flex items-center gap-2 hover:underline hover:underline-offset-4" >
+          <a href="mailto:wusicong001@gmail.com">
             <Image
               src="/envelope-regular.svg"
               alt="Email"
@@ -83,8 +83,7 @@ export default function nav ({ photoAlbums = [] }) {
           </a>
         </div>
       </nav>
-      <footer className="flex h-1/12 justify-center items-end text-sm 
-        max-xl:fixed max-xl:bottom-2 max-xl:z-60 max-xl:w-full
+      <footer className="flex h-1/12 justify-center items-end text-sm z-60 w-full bottom-2 fixed xl:static opacity-60 xl:opacity-95
       ">
         <div>
           <a href="https://keely-lee.github.io/" target="_blank" className="copyright">

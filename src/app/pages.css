@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 @layer base {
   /* override Tailwind's base */
   h1 {
@@ -13,43 +15,68 @@
 
 .main {
   position: sticky;
-  left: 1000px;
   display: flex;
-  min-height: 100vh;
-  padding-right: 2.5rem;
   z-index: 50;
+  overflow: auto;
 
-  @media (width < 96rem) {
-    /* horizontal phone & other media */
-    left: 0px;
-    min-height: calc(4/5 * 100%);
-    height: calc(4/5 * 100%);
-    padding: 0.5rem;
-    width: 100%;
-    top: 900px;
-    overflow: auto;
+  left: 0px;
+  padding: 0.5rem;
+  top: 1000px;
+  
+  width: 100%;
+  min-height: calc(4/5 * 100%);
+  height: calc(4/5 * 100%);
+
+  /* desktop */
+  @media (width >= 96rem) {
+    width: calc(5/6 * 100%);
+    min-height: 100dvh;
+    height: 100dvh;
+
+    left: 1000px;
+    padding-right: 2.5rem;
+
+    &.peer\/wide {
+      width: calc(3/4 * 100%);
+    }
   }
 
   @media (width < 40rem) { 
     /* vertical phone */
-    /* name max width to save across all */
     min-height: calc(7/8 * 100%);
     height: calc(7/8 * 100%);
   }
+
+  /* 
+    mobile: 
+      width full
+      height & min-height: 4/5
+      less than small: height & min-height: 7/8
+
+    desktop: 
+      width-wide: 3/4 (home page)
+      width: 5/6
+      height: full
+  */
 }
 
 .links {
-  display: inline-flex;
   align-items: center;
-  width: 100%;
   justify-content: center;
-  a {
-    padding: 0 .25rem;
+
+  display: block;
+  width: auto;
+
+  @media (width >= 96rem) {
+    display: inline-flex;
+    width: 100%;
   }
 
-  @media (width < 96rem) {
-    display: block;
-    width: auto;
+  a {
+    display: flex;
+    align-items: center;
+    padding: 0 0.25rem;
+    gap: 0.25rem;
   }
 }
 
@@ -58,19 +85,27 @@
   /* need to handle second toggle, display none instead. full web size also */
 }
 
-/* mobile */
-@media (width < 96rem) {
-  /* add all css media size here? */
+@layer components {
   .hide-bg {
     background-color: var(--color-stone-50);
     border-radius: 4px;
     box-shadow: 2px 2px 4px var(--color-neutral-600);
     height: min-content;
+
+    @media (width >= 96rem) {
+      background-color: unset;
+      box-shadow: unset;
+    }
   }
 
   .peer\/dark~div {
     .hide-bg {
       background-color: var(--color-neutral-800);
+
+      @media (width >= 96rem) {
+        background-color: unset;
+        box-shadow: unset;
+      }
     }
   }
 }

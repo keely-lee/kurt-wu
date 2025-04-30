@@ -7,8 +7,8 @@ export default async function Photo ({ params }) {
   const src = await getImageSrc(`photos/${album}/${photo}`);
   const encoded = encodeURI(src)
   return (
-    <div className='main album-main flex-col w-5/6'>
-      <Link href={`/photos/${album}`} className='relative p-2 hover:cursor-pointer top-10 max-xl:top-0'>
+    <div className='main album-main flex-col'>
+      <Link href={`/photos/${album}`} className='relative p-2 hover:cursor-pointer top-0'>
         <Image
           src="/arrow-left-solid.svg"
           alt="back"
