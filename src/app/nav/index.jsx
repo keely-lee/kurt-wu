@@ -15,7 +15,8 @@ export default async function NavWrapper () {
       peer-[*]/dark:border-r-1
       peer-[*]/dark:[&_img]:invert
 
-      max-xl:h-1/8
+      max-sm:h-1/8
+      max-xl:h-1/5
       max-xl:p-1
       max-xl:w-full
       max-xl:border-none

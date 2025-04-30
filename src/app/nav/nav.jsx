@@ -23,7 +23,7 @@ export default function nav ({ photoAlbums = [] }) {
   return (
     <div className="h-full">
       <nav className="h-11/12 max-xl:h-full max-xl:flex max-xl:flex-wrap">
-        <div className="h-3/10 max-xl:order-1 max-xl:flex-[8_0]">
+        <div className="h-3/10 max-xl:h-5/10 max-sm:h-3/10 max-xl:order-1 max-xl:flex-[8_0]">
           <h1 className="pt-8 pb-8 pl-0 max-xl:p-2">Kurt Wu Photography</h1>
         </div>
         <div className="*:pt-2 *:pb-2 h-5/10 max-xl:order-3 max-xl:basis-full max-xl:flex max-xl:pl-2">
@@ -84,7 +84,7 @@ export default function nav ({ photoAlbums = [] }) {
         </div>
       </nav>
       <footer className="flex h-1/12 justify-center items-end text-sm 
-        max-xl:fixed max-xl:bottom-5 max-xl:z-60 max-xl:w-full
+        max-xl:fixed max-xl:bottom-2 max-xl:z-60 max-xl:w-full
       ">
         <div>
           <a href="https://keely-lee.github.io/" target="_blank" className="copyright">

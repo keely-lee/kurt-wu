@@ -20,14 +20,21 @@
   z-index: 50;
 
   @media (width < 96rem) {
-    /* name max width to save across all */
+    /* horizontal phone & other media */
     left: 0px;
-    min-height: calc(7/8 * 100%);
-    height: calc(7/8 * 100%);
+    min-height: calc(4/5 * 100%);
+    height: calc(4/5 * 100%);
     padding: 0.5rem;
     width: 100%;
     top: 900px;
     overflow: auto;
+  }
+
+  @media (width < 40rem) { 
+    /* vertical phone */
+    /* name max width to save across all */
+    min-height: calc(7/8 * 100%);
+    height: calc(7/8 * 100%);
   }
 }
 
