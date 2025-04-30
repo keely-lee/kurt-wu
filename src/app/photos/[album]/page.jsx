@@ -9,9 +9,9 @@ export default async function Album ({ params }) {
   const photos = await getAlbumContents(`${photosPath}${album}/`);
 
   return (
-    <div className="main album-main flex-col w-5/6">
+    <div className="main album-main flex-col">
       <h1 className="text-center">{album}</h1>
-      <div className='grid grid-cols-3 gap-1 max-xl:grid-cols-1 max-xl:justify-items-center'>
+      <div className='grid grid-cols-1 xl:grid-cols-3 gap-1 justify-items-center'>
         {
           photos.map(async ({Key, ETag}) => {
             const src = await getImageSrc(Key);

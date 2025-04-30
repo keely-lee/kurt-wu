@@ -19,9 +19,9 @@ export default async function Photos() {
   }, {});
 
   return (
-    <div className="main w-5/6 dark:bg-neutral-950 dark:text-slate-200 peer/dark flex-col">
+    <div className="main dark:bg-neutral-950 dark:text-slate-200 peer/dark flex-col">
       <h1 className='p-2 pt-4 text-center underline'>ALBUMS</h1>
-      <ul className="grid grid-cols-3 max-xl:grid-cols-2 auto-rows-min gap-8 p-6 w-full">
+      <ul className="grid grid-cols-2 xl:grid-cols-3 auto-rows-min gap-8 p-6 w-full">
         { albums.map(async ({ name }) => {
           // [TODO]: fix this
           let source;
